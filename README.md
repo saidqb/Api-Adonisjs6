@@ -1,8 +1,9 @@
 # Api-Adonisjs 
 Version: 6
 
-## Requiremet
- * Node.js >= 20.6
+## Requirements:
+- **Node.js** >= 20.6
+
 
 [Full Documentation Adonisjs](https://docs.adonisjs.com/guides/preface/introduction)
 
@@ -21,8 +22,6 @@ This project is an example of implementing key features in AdonisJS 6 for REST A
 - **CRUD Examples**: users, user roles, user statuses and posts
 - **Others**: add global helper, add global constants, and add uploaded file route
 
-## Requirements:
-- **Node.js** >= 20.6
 
 =====================
 
