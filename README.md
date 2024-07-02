@@ -2,7 +2,27 @@
 
 [Full Documentation Adonisjs](https://docs.adonisjs.com/guides/preface/introduction)
 
-Command pallate ``F1`` Vscode
+Fork From [AdonisJS-6-REST-API](https://github.com/rayhannovelo/AdonisJS-6-REST-API/tree/main)
+
+## Description:
+This project is an example of implementing key features in AdonisJS 6 for REST API with Access Tokens as its auth guard.
+
+## Features:
+- **User Authentication (Access Token)**: adding features for login, logout, manage profile using token, and refresh token
+- **User Authorization (Bouncer)**: adding user abilities and post policies
+- **Database (Lucid)**: implementing migration, seeder, and relationship model
+- **Validation (VineJS)**: adding custom rules for exists and unique
+- **Middleware**: implementing auth and bouncer middleware
+- **Exception Handling**: adding handling errors for route not found, unauthorized access, unauthorized action (Bouncer), validation error (VineJS), custom database error (Lucid)
+- **CRUD Examples**: users, user roles, user statuses and posts
+- **Others**: add global helper, add global constants, and add uploaded file route
+
+## Requirements:
+- **Node.js** >= 20.6
+
+=====================
+
+**Command pallate ``F1`` Vscode**
 
 ```
 AdonisJS VSCode extension
@@ -12,6 +32,11 @@ Japa VSCode extension
 
 # command cheatsheet
 hanya bantuan sekilas
+
+### App-key
+```
+node ace generate:key 
+```
 
 ### Controller
 ```
@@ -68,6 +93,11 @@ node ace db:seed --files "./database/seeders/user_seeder.ts"
 # Interactive mode
 node ace db:seed -i
 
+```
+
+### View
+```
+node ace make:view email/test
 ```
 
 ## advance
