@@ -1,4 +1,8 @@
-# Api-Adonisjs6
+# Api-Adonisjs 
+Version: 6
+
+## Requiremet
+ * Node.js >= 20.6
 
 [Full Documentation Adonisjs](https://docs.adonisjs.com/guides/preface/introduction)
 
