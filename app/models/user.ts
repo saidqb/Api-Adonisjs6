@@ -38,7 +38,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare emailVerifiedAt: string | null
 
   @column()
-  declare photo: string | null
+  declare photo_url: string | null
 
   @column.dateTime({
     autoCreate: true,
