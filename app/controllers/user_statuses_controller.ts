@@ -11,7 +11,7 @@ export default class UserStatusesController extends BaseController {
   async index() {
     const data = await UserStatus.all()
 
-    this.response('User statuses retrieved successfully', data)
+    this.response('User statuses retrieved successfully', { items: data })
   }
 
   /**
@@ -28,7 +28,7 @@ export default class UserStatusesController extends BaseController {
     const output = await validator.validate(payload)
     const data = await UserStatus.create(output)
 
-    this.response('User status created successfully', data)
+    this.response('User status created successfully', {item:data})
   }
 
   /**
@@ -37,7 +37,7 @@ export default class UserStatusesController extends BaseController {
   async show({ params }: HttpContext) {
     const data = await UserStatus.findOrFail(params.id)
 
-    this.response('User status retrieved successfully', data)
+    this.response('User status retrieved successfully', {item:data})
   }
 
   /**
@@ -57,7 +57,7 @@ export default class UserStatusesController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('User status updated successfully', data)
+    this.response('User status updated successfully', {item:data})
   }
 
   /**

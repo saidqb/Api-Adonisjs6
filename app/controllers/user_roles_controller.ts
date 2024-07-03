@@ -11,7 +11,7 @@ export default class UserRolesController extends BaseController {
   async index() {
     const data = await UserRole.all()
 
-    this.response('User roles retrieved successfully', data)
+    this.response('User roles retrieved successfully', { items: data })
   }
 
   /**
@@ -28,7 +28,7 @@ export default class UserRolesController extends BaseController {
     const output = await validator.validate(payload)
     const data = await UserRole.create(output)
 
-    this.response('User role created successfully', data)
+    this.response('User role created successfully', { item: data })
   }
 
   /**
@@ -37,7 +37,7 @@ export default class UserRolesController extends BaseController {
   async show({ params }: HttpContext) {
     const data = await UserRole.findOrFail(params.id)
 
-    this.response('User role retrieved successfully', data)
+    this.response('User role retrieved successfully', { item: data })
   }
 
   /**
@@ -57,7 +57,7 @@ export default class UserRolesController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('User role updated successfully', data)
+    this.response('User role updated successfully', { item: data })
   }
 
   /**

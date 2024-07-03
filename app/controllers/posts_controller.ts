@@ -12,7 +12,7 @@ export default class PostsController extends BaseController {
   async index() {
     const data = await Post.all()
 
-    this.response('Posts retrieved successfully', data)
+    this.response('Posts retrieved successfully', { items: data })
   }
 
   /**
@@ -31,7 +31,7 @@ export default class PostsController extends BaseController {
     const output = await validator.validate({ user_id: user.id, ...payload })
     const data = await Post.create(output)
 
-    this.response('Post created successfully', data)
+    this.response('Post created successfully', { item: data })
   }
 
   /**
@@ -43,7 +43,7 @@ export default class PostsController extends BaseController {
     await data.user.load('user_role')
     await data.user.load('user_status')
 
-    this.response('Post retrieved successfully', data)
+    this.response('Post retrieved successfully', { item: data })
   }
 
   /**
@@ -69,7 +69,7 @@ export default class PostsController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('Post updated successfully', data)
+    this.response('Post updated successfully', { item: data })
   }
 
   /**

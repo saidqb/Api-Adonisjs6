@@ -13,13 +13,13 @@ export default class AuthController extends BaseController {
       // check user
       const user = await User.findBy('email', email)
       if (!user) {
-        return this.responseError('Invalid credentials', 401)
+        return this.responseError('Invalid credentials', 412)
       }
 
       // check password
       const login = await hash.verify(user.password, password)
       if (!login) {
-        return this.responseError('Invalid credentials', 401)
+        return this.responseError('Invalid credentials', 412)
       }
 
       // create token

@@ -40,7 +40,7 @@ export default class AccountController extends BaseController {
     // upload photo
     if (photo) {
       if (!photo.isValid) {
-        return this.responseError('Validation error', 422, photo.errors)
+        return this.responseError('Validation error', 412, photo.errors)
       }
 
       // delete old file

@@ -15,7 +15,7 @@ export default class UsersController extends BaseController {
   async index() {
     const data = await User.all()
 
-    this.response('Users retrieved successfully', data)
+    this.response('Users retrieved successfully', { items: data })
   }
 
   /**
@@ -59,7 +59,7 @@ export default class UsersController extends BaseController {
     // upload photo
     if (photo) {
       if (!photo.isValid) {
-        return this.responseError('Validation error', 422, photo.errors)
+        return this.responseError('Validation error', 412, photo.errors)
       }
 
       await photo.move(app.makePath('uploads/user-photo'), {
@@ -71,7 +71,7 @@ export default class UsersController extends BaseController {
 
     const data = await User.create(output)
 
-    this.response('User created successfully', data)
+    this.response('User created successfully', { item: data })
   }
 
   /**
@@ -83,7 +83,7 @@ export default class UsersController extends BaseController {
     await data.load('user_status')
     await data.load('posts')
 
-    this.response('User retrieved successfully', data)
+    this.response('User retrieved successfully', { item: data })
   }
 
   /**
@@ -133,7 +133,7 @@ export default class UsersController extends BaseController {
     // upload photo
     if (photo) {
       if (!photo.isValid) {
-        return this.responseError('Validation error', 422, photo.errors)
+        return this.responseError('Validation error', 412, photo.errors)
       }
 
       // delete old file
@@ -152,7 +152,7 @@ export default class UsersController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('User updated successfully', data)
+    this.response('User updated successfully', { item: data })
   }
 
   /**
