@@ -1,11 +1,9 @@
 import { HttpContext } from '@adonisjs/core/http'
-import app from '@adonisjs/core/services/app'
 import { cuid } from '@adonisjs/core/helpers'
 import vine from '@vinejs/vine'
 import BaseController from '#core/base_controller'
 import User from '#models/user'
 import { uniqueRule } from '#rules/unique'
-import fs from 'node:fs'
 
 export default class AccountController extends BaseController {
 
@@ -31,31 +29,6 @@ export default class AccountController extends BaseController {
       })
     )
     const output = await validator.validate(payload)
-
-    const photo = request.file('photo', {
-      size: '2mb',
-      extnames: ['jpg', 'png', 'jpeg'],
-    })
-
-    // upload photo
-    if (photo) {
-      if (!photo.isValid) {
-        return this.responseError('Validation error', 412, photo.errors)
-      }
-
-      // delete old file
-      if (user.photo) {
-        fs.unlink(app.makePath(`uploads/user-photo/${user.photo}`), (err) => {
-          if (err) console.error('Error removing file:', err)
-        })
-      }
-
-      await photo.move(app.makePath('uploads/user-photo'), {
-        name: `${cuid()}.${photo.extname}`,
-      })
-
-      output.photo = photo.fileName!
-    }
 
     await user?.merge(output).save()
 

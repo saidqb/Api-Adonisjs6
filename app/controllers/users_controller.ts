@@ -24,12 +24,6 @@ export default class UsersController extends BaseController {
       vine.object({
         user_status_id: vine.number().use(existsRule({ table: 'user_statuses', column: 'id' })),
         user_role_id: vine.number().use(existsRule({ table: 'user_roles', column: 'id' })),
-        username: vine.string().use(
-          uniqueRule({
-            table: 'users',
-            column: 'username',
-          })
-        ),
         password: vine
           .string()
           .minLength(8)
@@ -76,14 +70,6 @@ export default class UsersController extends BaseController {
         id: vine.number().use(existsRule({ table: 'users', column: 'id' })),
         user_status_id: vine.number().use(existsRule({ table: 'user_statuses', column: 'id' })),
         user_role_id: vine.number().use(existsRule({ table: 'user_roles', column: 'id' })),
-        username: vine.string().use(
-          uniqueRule({
-            table: 'users',
-            column: 'username',
-            except: params.id,
-            exceptColumn: 'id',
-          })
-        ),
         password: vine
           .string()
           .minLength(8)
