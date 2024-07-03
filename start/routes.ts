@@ -73,25 +73,3 @@ router
   })
   .prefix('v1')
   .use(middleware.apikey())
-
-/*
-|--------------------------------------------------------------------------
-| Uploaded Files Routes
-|--------------------------------------------------------------------------
-*/
-
-import { sep, normalize } from 'node:path'
-import app from '@adonisjs/core/services/app'
-
-router.get('/uploads/*', ({ request, response }) => {
-  const filePath = request.param('*').join(sep)
-  const normalizedPath = normalize(filePath)
-  const PATH_TRAVERSAL_REGEX = /(?:^|[\\/])\.\.(?:[\\/]|$)/
-
-  if (PATH_TRAVERSAL_REGEX.test(normalizedPath)) {
-    return response.badRequest('Malformed path')
-  }
-
-  const absolutePath = app.makePath('uploads', normalizedPath)
-  return response.download(absolutePath)
-})

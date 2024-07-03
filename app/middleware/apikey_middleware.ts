@@ -17,7 +17,7 @@ export default class AuthMiddleware {
     next: NextFn,
   ) {
 
-    if(ctx.request.request!.headers!['api-key'] !== this.apikey) {
+    if(ctx.request.request?.headers['api-key'] !== this.apikey) {
       return ctx.response.status(401).send({
         status: 401,
         success: false,

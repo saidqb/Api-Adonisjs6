@@ -22,7 +22,7 @@ This project is an example of implementing key features in AdonisJS 6 for REST A
 - **Middleware**: implementing auth and bouncer middleware
 - **Exception Handling**: adding handling errors for route not found, unauthorized access, unauthorized action (Bouncer), validation error (VineJS), custom database error (Lucid)
 - **CRUD Examples**: users, user roles, user statuses and posts
-- **Others**: add global helper, add global constants, and add uploaded file route
+- **Others**: add global helper, add global constants
 
 
 =====================
