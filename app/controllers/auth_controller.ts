@@ -26,7 +26,8 @@ export default class AuthController extends BaseController {
       const token = await User.accessTokens.create(user, ['*'], {
         name: identity ?? cuid(),
       })
-      console.log(token)
+
+
       this.response('Login successfully', { item: user, user_token: token })
     } catch (error: any) {
       this.responseError('Invalid credentials', 400)

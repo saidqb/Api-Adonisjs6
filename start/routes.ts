@@ -72,6 +72,7 @@ router
       .use(middleware.auth())
   })
   .prefix('v1')
+  .use(middleware.apikey())
 
 /*
 |--------------------------------------------------------------------------

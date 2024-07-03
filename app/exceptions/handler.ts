@@ -17,7 +17,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
-    console.log('Error', error)
+    // console.log('Error', error)
 
     if (error instanceof errors.E_ROUTE_NOT_FOUND) {
       return ctx.response.status(error.status).send({
@@ -33,7 +33,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
       return ctx.response.status(error.status).send({
         status: 401,
         success: false,
-        error_code: 0,
+        error_code: 2,
         message: 'Unauthorized access',
         data: {},
       })
@@ -43,7 +43,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
       return ctx.response.status(error.status).send({
         status: 401,
         success: false,
-        error_code: 0,
+        error_code: 3,
         message: 'Unauthorized action',
         data: {},
       })
