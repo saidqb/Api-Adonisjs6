@@ -3,35 +3,62 @@ import { HttpContext } from '@adonisjs/core/http'
 
 @inject()
 export default class BaseController {
-  constructor(protected ctx: HttpContext) {}
+  constructor(protected ctx: HttpContext) { }
 
   /**
    * send success response method.
    */
-  async response(message: string, data: any = null, code: number = 200) {
-    const response: { success: boolean; message: string; data?: any } = {
+  async response(message: string, data: any = null, code: number = 200, error_code: any = 0) {
+    const response: { success: boolean; message: string; data?: any, status: number, error_code: number } = {
+      status: code,
       success: true,
+      error_code,
       message,
+      data
     }
 
-    if (data !== null) {
-      response.data = data
+    if (data === null) {
+      response.data.item = {}
     }
 
     this.ctx.response.status(code).send(response)
   }
 
   /**
-   * send error response method.
+   * send success response method.
    */
-  async responseError(message: string, code: number = 400, data: any = null) {
-    const response: { success: boolean; message: string; data?: any } = {
-      success: false,
+  async responseList(message: string, data: any = null, code: number = 200, error_code: any = 0) {
+    const response: { success: boolean; message: string; data?: any, status: number, error_code: number } = {
+      status: code,
+      success: true,
+      error_code ,
       message,
+      data
     }
 
-    if (data !== null) {
-      response.data = data
+    if (data === null) {
+      response.data.items = []
+    }
+
+    this.ctx.response.status(code).send(response)
+  }
+
+
+  /**
+   * send error response method.
+   */
+  async responseError(message: string, code: number = 400, data: any = null, error_code: any = 0) {
+    const response: { success: boolean; message: string; data?: any, status: number, error_code: number } = {
+      status: code,
+      success: true,
+      error_code,
+      message,
+      data
+
+    }
+
+    if (data === null) {
+      response.data = {}
     }
 
     this.ctx.response.status(code).send(response)

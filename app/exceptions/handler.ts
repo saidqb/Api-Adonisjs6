@@ -21,28 +21,39 @@ export default class HttpExceptionHandler extends ExceptionHandler {
 
     if (error instanceof errors.E_ROUTE_NOT_FOUND) {
       return ctx.response.status(error.status).send({
+        status: 404,
         success: false,
+        error_code: 0,
         message: 'Route not found',
+        data: {},
       })
     }
 
     if (error instanceof AuthErrors.E_UNAUTHORIZED_ACCESS) {
       return ctx.response.status(error.status).send({
+        status: 401,
         success: false,
+        error_code: 0,
         message: 'Unauthorized access',
+        data: {},
       })
     }
 
     if (error instanceof BouncerErrors.E_AUTHORIZATION_FAILURE) {
       return ctx.response.status(error.status).send({
+        status: 401,
         success: false,
+        error_code: 0,
         message: 'Unauthorized action',
+        data: {},
       })
     }
 
     if (error instanceof VineErrors.E_VALIDATION_ERROR) {
       return ctx.response.status(error.status).send({
-        success: false,
+        status: 422,
+        success: true,
+        error_code: 0,
         message: 'Validation error',
         data: error.messages,
       })

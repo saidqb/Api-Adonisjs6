@@ -1,16 +1,18 @@
-# Api-Adonisjs 
-Version: 6
-
-## Requirements:
-- **Node.js** >= 20.6
-
 
 [Full Documentation Adonisjs](https://docs.adonisjs.com/guides/preface/introduction)
 
 Fork From [AdonisJS-6-REST-API](https://github.com/rayhannovelo/AdonisJS-6-REST-API/tree/main)
 
+# Api-Adonisjs 
+
+Version: 6
+
 ## Description:
 This project is an example of implementing key features in AdonisJS 6 for REST API with Access Tokens as its auth guard.
+
+## Requirements:
+- **Node.js** >= 20.6
+
 
 ## Features:
 - **User Authentication (Access Token)**: adding features for login, logout, manage profile using token, and refresh token
@@ -71,6 +73,20 @@ node ace migration:refresh
 node ace migration:refresh --seed
 
 ```
+
+### Seeder
+```
+node ace make:seeder User
+
+# runs all
+node ace db:seed
+# runs Specified file
+node ace db:seed --files "./database/seeders/user_seeder.ts"
+# Interactive mode
+node ace db:seed -i
+
+```
+
 ### Model
 ```
 node ace make:model User
@@ -85,18 +101,7 @@ node ace make:model User -f
 # CREATE: app/Models/User.ts
 # CREATE: database/factories/User.ts
 ```
-### Seeder
-```
-node ace make:seeder User
 
-# runs all
-node ace db:seed
-# runs Specified file
-node ace db:seed --files "./database/seeders/user_seeder.ts"
-# Interactive mode
-node ace db:seed -i
-
-```
 
 ### View
 ```
@@ -106,4 +111,44 @@ node ace make:view email/test
 ## advance
 ```
 node ace make:command greet
+```
+
+
+# postman
+
+## postman
+
+Akses data login
+```
+Authorization: Bearer <token>
+```
+token didapat dari login
+
+## postman response default
+
+display single data
+```json
+{
+  "status": 200,
+  "success": true,
+  "error_code": 0,
+  "message": "success",
+  "data": {
+      "item": {}
+  }
+}
+```
+
+display multiple data
+```json
+{
+  "status": 200,
+  "success": true,
+  "error_code": 0,
+  "message": "success",
+  "data": {
+      "items": [],
+      "pagination" : {}
+  }
+}
 ```
