@@ -10,7 +10,7 @@ export default class ConfigsController extends BaseController {
   async index() {
     const data = await Config.all()
 
-    this.response('Config retrieved successfully', { items: data })
+    this.responseList('Config retrieved successfully', { items: data })
   }
 
   /**

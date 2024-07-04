@@ -12,7 +12,7 @@ export default class PostsController extends BaseController {
   async index() {
     const data = await Post.all()
 
-    this.response('Posts retrieved successfully', { items: data })
+    this.responseList('Posts retrieved successfully', { items: data })
   }
 
   /**

@@ -11,7 +11,7 @@ export default class UserStatusesController extends BaseController {
   async index() {
     const data = await UserStatus.all()
 
-    this.response('User statuses retrieved successfully', { items: data })
+    this.responseList('User statuses retrieved successfully', { items: data })
   }
 
   /**

@@ -11,7 +11,7 @@ export default class UserRolesController extends BaseController {
   async index() {
     const data = await UserRole.all()
 
-    this.response('User roles retrieved successfully', { items: data })
+    this.responseList('User roles retrieved successfully', { items: data })
   }
 
   /**
