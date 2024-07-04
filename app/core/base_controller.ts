@@ -17,7 +17,7 @@ export default class BaseController {
       data
     }
 
-    if (data === null) {
+    if (response.data?.item === null) {
       response.data.item = {}
     }
 
@@ -31,13 +31,15 @@ export default class BaseController {
     const response: { success: boolean; message: string; data?: any, status: number, error_code: number } = {
       status: code,
       success: true,
-      error_code ,
+      error_code,
       message,
       data
     }
 
     if (data === null) {
+      response.data = {}
       response.data.items = []
+      response.data.pagination = {}
     }
 
     this.ctx.response.status(code).send(response)

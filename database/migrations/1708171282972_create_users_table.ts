@@ -25,7 +25,7 @@ export default class extends BaseSchema {
       table.string('name')
       table.string('email').unique()
       table.timestamp('email_verified_at')
-      table.string('photo_url')
+      table.string('avatar_url')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

@@ -20,7 +20,7 @@ export default class AccountController extends BaseController {
       vine.object({
         password: vine.string().minLength(8).maxLength(32).confirmed().optional(),
         name: vine.string().optional(),
-        photo: vine.string().optional(),
+        avatar_url: vine.string().optional(),
         email: vine
           .string()
           .email()

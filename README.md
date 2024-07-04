@@ -12,6 +12,12 @@ This project is an example of implementing key features in AdonisJS 6 for REST A
 
 ## Requirements:
 - **Node.js** >= 20.6
+- 
+## main library
+- [vinejs](https://vinejs.dev/docs/types/string#defining-error-messages) : Validation
+- [lucid](https://lucid.adonisjs.com/docs/table-builder) : Database Query Builder
+- [luxon](https://moment.github.io/luxon/#/?id=luxon) : Date Time
+- other
 
 
 ## Features:
@@ -49,6 +55,8 @@ node ace make:controller users
 ```
 
 Menggunakan library [lucid](https://lucid.adonisjs.com/docs/introduction)
+
+
 ### Migration
 ```
 node ace make:migration users
@@ -117,6 +125,11 @@ node ace make:command greet
 # postman
 
 ## postman
+
+Akses Api
+```
+Api-Key: <yor api key>
+```
 
 Akses data login
 ```

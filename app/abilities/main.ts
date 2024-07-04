@@ -14,10 +14,10 @@
 
 import { Bouncer, AuthorizationResponse } from '@adonisjs/bouncer'
 import User from '#models/user'
-import { ADMIN, USER } from '#constants/user_role_constants'
+import { SUPER_ADMIN, ADMIN, USER } from '#constants/user_role_constants'
 
 export const manageUser = Bouncer.ability((user: User) => {
-  const allowUserRole = [ADMIN]
+  const allowUserRole = [SUPER_ADMIN]
 
   if (allowUserRole.includes(user.userRoleId)) {
     return true
@@ -27,7 +27,7 @@ export const manageUser = Bouncer.ability((user: User) => {
 })
 
 export const managePost = Bouncer.ability((user: User) => {
-  const allowUserRole = [ADMIN, USER]
+  const allowUserRole = [SUPER_ADMIN,ADMIN, USER]
 
   if (allowUserRole.includes(user.userRoleId)) {
     return true

@@ -25,7 +25,10 @@ export default class PostsController extends BaseController {
       vine.object({
         user_id: vine.number().use(existsRule({ table: 'users', column: 'id' })),
         title: vine.string(),
-        body: vine.string(),
+        content: vine.string(),
+        image_url: vine.string().optional(),
+        status: vine.string().optional(),
+        type: vine.string().optional(),
       })
     )
     const output = await validator.validate({ user_id: user.id, ...payload })
@@ -57,7 +60,10 @@ export default class PostsController extends BaseController {
         id: vine.number().use(existsRule({ table: 'posts', column: 'id' })),
         user_id: vine.number().use(existsRule({ table: 'users', column: 'id' })),
         title: vine.string(),
-        body: vine.string(),
+        content: vine.string(),
+        image_url: vine.string().optional(),
+        status: vine.string().optional(),
+        type: vine.string().optional(),
       })
     )
     const output = await validator.validate({ id: params.id, user_id: user.id, ...payload })

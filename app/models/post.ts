@@ -14,7 +14,24 @@ export default class Post extends BaseModel {
   declare title: string
 
   @column()
-  declare body: string
+  declare slug: string
+
+  @column()
+  declare content: string
+
+  @column()
+  declare type: string
+
+  @column()
+  declare status: string
+
+  @column()
+  declare image_url: string
+
+  @column()
+  declare viewCount: number
+
+
 
   @column.dateTime({
     autoCreate: true,
