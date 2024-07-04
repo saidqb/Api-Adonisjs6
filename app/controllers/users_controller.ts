@@ -12,7 +12,7 @@ export default class UsersController extends BaseController {
   async index() {
     const data = await User.all()
 
-    this.response('Users retrieved successfully', { items: data })
+    this.responseList('Users retrieved successfully', { items: data })
   }
 
   /**

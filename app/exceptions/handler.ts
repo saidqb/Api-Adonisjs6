@@ -55,7 +55,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
         success: true,
         error_code: 0,
         message: 'Validation error',
-        data: error.messages,
+        data: { item: error.messages },
       })
     }
 

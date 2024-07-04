@@ -17,7 +17,7 @@ export default class BaseController {
       data
     }
 
-    if (response.data?.item === null) {
+    if (response.data.item === undefined) {
       response.data.item = {}
     }
 
@@ -36,9 +36,10 @@ export default class BaseController {
       data
     }
 
-    if (data === null) {
-      response.data = {}
+    if (response.data.items === undefined) {
       response.data.items = []
+    }
+    if (response.data.pagination === undefined) {
       response.data.pagination = {}
     }
 
@@ -56,7 +57,6 @@ export default class BaseController {
       error_code,
       message,
       data
-
     }
 
     if (data === null) {

@@ -18,8 +18,8 @@ export default class extends BaseSchema {
       table.text('content','longtext')
       table.string('type',60).defaultTo('post')
       table.string('status',60).defaultTo('publish')
-      table.integer('view_count').defaultTo(0)
       table.string('image_url')
+      table.integer('view_count').defaultTo(0)
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
