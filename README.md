@@ -3,10 +3,6 @@
 
 Fork From [AdonisJS-6-REST-API](https://github.com/rayhannovelo/AdonisJS-6-REST-API/tree/main) Banyak perubahan dan modifikasi dari fork
 
-## COFFEE
-
-For more inovation [Coffee](https://saidqb.github.io/coffee)
-
 # Api-Adonisjs 
 
 Version: 6
@@ -167,3 +163,8 @@ display multiple data
   }
 }
 ```
+
+## COFFEE FOR BEST PERFORMANCE
+
+For more inovation [Coffee](https://saidqb.github.io/coffee)
+
