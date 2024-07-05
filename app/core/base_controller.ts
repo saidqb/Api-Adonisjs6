@@ -1,9 +1,20 @@
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
+import * as query from '#core/concerns/query'
 
 @inject()
 export default class BaseController {
-  constructor(protected ctx: HttpContext) { }
+  protected db: any;
+  protected query: any;
+
+  constructor(protected ctx: HttpContext) {
+
+    this.db = db
+
+    this.query = query
+  }
+
 
   /**
    * send success response method.

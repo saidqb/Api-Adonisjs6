@@ -9,10 +9,25 @@ export default class UsersController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
-    const data = await User.all()
+  async index({ request }: HttpContext) {
 
-    this.responseList('Users retrieved successfully', { items: data })
+    const params = request.all()
+
+    let query: any = {
+      table_and_join: 'from users',
+      field_show: [
+        'id',
+        'name',
+        'email',
+        'user_role_id',
+        'user_status_id'
+      ],
+      field_search: ['email', 'name'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Users retrieved successfully', result)
   }
 
   /**
@@ -99,7 +114,7 @@ export default class UsersController extends BaseController {
    */
   async destroy({ params }: HttpContext) {
     const data = await User.findOrFail(params.id)
-    if(data.id === 1){
+    if (data.id === 1) {
       return this.responseError('Cannot delete super admin', 412)
     }
     await data?.delete()

@@ -8,10 +8,23 @@ export default class UserRolesController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
-    const data = await UserRole.all()
+ async index({ request }: HttpContext) {
 
-    this.responseList('User roles retrieved successfully', { items: data })
+    const params = request.all()
+
+    let query: any = {
+      table_and_join: 'from user_roles',
+      field_show: [
+        'id',
+        'user_role_name',
+        'user_role_description',
+      ],
+      field_search: ['user_role_name'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Users retrieved successfully', result)
   }
 
   /**

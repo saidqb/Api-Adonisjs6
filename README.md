@@ -1,37 +1,34 @@
 
 [Full Documentation Adonisjs](https://docs.adonisjs.com/guides/preface/introduction)
 
-Fork From [AdonisJS-6-REST-API](https://github.com/rayhannovelo/AdonisJS-6-REST-API/tree/main)
+Fork From [AdonisJS-6-REST-API](https://github.com/rayhannovelo/AdonisJS-6-REST-API/tree/main) Banyak perubahan dan modifikasi dari fork
 
 # Api-Adonisjs 
 
 Version: 6
 
 ## Description:
-This project is an example of implementing key features in AdonisJS 6 for REST API with Access Tokens as its auth guard.
+Clone and Work
 
 ## Requirements:
 - **Node.js** >= 20.6
-- 
-## main library
-- [vinejs](https://vinejs.dev/docs/types/string#defining-error-messages) : Validation
-- [lucid](https://lucid.adonisjs.com/docs/table-builder) : Database Query Builder
-- [luxon](https://moment.github.io/luxon/#/?id=luxon) : Date Time
-- other
-
+- Mysql
 
 ## Features:
-- **User Authentication (Access Token)**: adding features for login, logout, manage profile using token, and refresh token
-- **User Authorization (Bouncer)**: adding user abilities and post policies
-- **Database (Lucid)**: implementing migration, seeder, and relationship model
-- **Validation (VineJS)**: adding custom rules for exists and unique
-- **Middleware**: implementing auth and bouncer middleware
-- **Exception Handling**: adding handling errors for route not found, unauthorized access, unauthorized action (Bouncer), validation error (VineJS), custom database error (Lucid)
-- **CRUD Examples**: users, user roles, user statuses and posts
-- **Others**: add global helper, add global constants
+- User Authentication (Access Token)
+- User Authorization (Bouncer) :: abilities, policies
+- Database [(Lucid)](https://lucid.adonisjs.com/docs/table-builder)
+- Validation [(VineJS)](https://vinejs.dev/docs/types/string#defining-error-messages)
+- Middleware
+- Exception Handling :: not found, unauthorized access, unauthorized action (Bouncer), validation error (VineJS), custom database error (Lucid)
+- CRUD :: configs, user_roles, user_statuses, users, access_tokens, posts
+- Helper
+- Constant
+- Date [(luxon)](https://moment.github.io/luxon/#/?id=luxon)
+- Core :: handler controller
+- filter query params
 
-
-=====================
+## VSCODE Extension:
 
 **Command pallate ``F1`` Vscode**
 

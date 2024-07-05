@@ -41,7 +41,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
 
     if (error instanceof BouncerErrors.E_AUTHORIZATION_FAILURE) {
       return ctx.response.status(error.status).send({
-        status: 401,
+        status: 403,
         success: false,
         error_code: 3,
         message: 'Unauthorized action',

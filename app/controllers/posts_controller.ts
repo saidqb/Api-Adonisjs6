@@ -9,10 +9,31 @@ export default class PostsController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
-    const data = await Post.all()
+  async index({ request }: HttpContext) {
 
-    this.responseList('Posts retrieved successfully', { items: data })
+    const params = request.all()
+
+    let query: any = {
+      table_and_join: 'from posts',
+      field_show: [
+        'id',
+        'user_id',
+        'title',
+        'slug',
+        'content',
+        'type',
+        'status',
+        'image_url',
+        'view_count',
+        'created_at',
+        'updated_at',
+      ],
+      field_search: ['user_role_name'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Users retrieved successfully', result)
   }
 
   /**
