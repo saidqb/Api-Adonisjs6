@@ -8,10 +8,23 @@ export default class UserStatusesController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
-    const data = await UserStatus.all()
+  async index({ request }: HttpContext) {
 
-    this.response('User statuses retrieved successfully', data)
+    const params = request.all()
+
+    let query: any = {
+      table_and_join: 'from user_statuses',
+      field_show: [
+        'id',
+        'user_status_name',
+        'user_status_description',
+      ],
+      field_search: ['user_status_name'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Users retrieved successfully', result)
   }
 
   /**
@@ -28,7 +41,7 @@ export default class UserStatusesController extends BaseController {
     const output = await validator.validate(payload)
     const data = await UserStatus.create(output)
 
-    this.response('User status created successfully', data)
+    this.response('User status created successfully', { item: data })
   }
 
   /**
@@ -37,7 +50,7 @@ export default class UserStatusesController extends BaseController {
   async show({ params }: HttpContext) {
     const data = await UserStatus.findOrFail(params.id)
 
-    this.response('User status retrieved successfully', data)
+    this.response('User status retrieved successfully', { item: data })
   }
 
   /**
@@ -57,7 +70,7 @@ export default class UserStatusesController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('User status updated successfully', data)
+    this.response('User status updated successfully', { item: data })
   }
 
   /**

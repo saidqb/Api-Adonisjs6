@@ -44,6 +44,7 @@ router.use([
  * the routes or the routes group.
  */
 export const middleware = router.named({
-  auth: () => import('#middleware/auth_middleware'),
-  bouncer: () => import('#middleware/bouncer_middleware'),
+  apikey: () => import('#middleware/auth/apikey_middleware'),
+  auth: () => import('#middleware/auth/auth_middleware'),
+  bouncer: () => import('#middleware/auth/bouncer_middleware'),
 })

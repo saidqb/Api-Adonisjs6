@@ -1,6 +1,8 @@
 import { defineConfig } from '@adonisjs/auth'
 import { InferAuthEvents, Authenticators } from '@adonisjs/auth/types'
 import { tokensGuard, tokensUserProvider } from '@adonisjs/auth/access_tokens'
+// import { basicAuthGuard, basicAuthUserProvider } from '@adonisjs/auth/basic_auth'
+
 
 const authConfig = defineConfig({
   default: 'api',
@@ -11,6 +13,11 @@ const authConfig = defineConfig({
         model: () => import('#models/user'),
       }),
     }),
+    // basicAuth: basicAuthGuard({
+    //   provider: basicAuthUserProvider({
+    //     model: () => import('#models/user'),
+    //   }),
+    // })
   },
 })
 

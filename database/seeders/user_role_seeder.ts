@@ -13,6 +13,11 @@ export default class extends BaseSeeder {
       },
       {
         id: 2,
+        userRoleName: 'Admin',
+        userRoleDescription: 'Admin features',
+      },
+      {
+        id: 3,
         userRoleName: 'User',
         userRoleDescription: 'User features',
       },

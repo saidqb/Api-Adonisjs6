@@ -25,9 +25,6 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare userStatusId: number
 
-  @column()
-  declare username: string
-
   @column({ serializeAs: null })
   declare password: string
 
@@ -41,7 +38,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare emailVerifiedAt: string | null
 
   @column()
-  declare photo: string | null
+  declare avatarUrl: string | null
 
   @column.dateTime({
     autoCreate: true,

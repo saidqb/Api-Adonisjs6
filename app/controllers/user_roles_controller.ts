@@ -8,10 +8,23 @@ export default class UserRolesController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
-    const data = await UserRole.all()
+ async index({ request }: HttpContext) {
 
-    this.response('User roles retrieved successfully', data)
+    const params = request.all()
+
+    let query: any = {
+      table_and_join: 'from user_roles',
+      field_show: [
+        'id',
+        'user_role_name',
+        'user_role_description',
+      ],
+      field_search: ['user_role_name'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Users retrieved successfully', result)
   }
 
   /**
@@ -28,7 +41,7 @@ export default class UserRolesController extends BaseController {
     const output = await validator.validate(payload)
     const data = await UserRole.create(output)
 
-    this.response('User role created successfully', data)
+    this.response('User role created successfully', { item: data })
   }
 
   /**
@@ -37,7 +50,7 @@ export default class UserRolesController extends BaseController {
   async show({ params }: HttpContext) {
     const data = await UserRole.findOrFail(params.id)
 
-    this.response('User role retrieved successfully', data)
+    this.response('User role retrieved successfully', { item: data })
   }
 
   /**
@@ -57,7 +70,7 @@ export default class UserRolesController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('User role updated successfully', data)
+    this.response('User role updated successfully', { item: data })
   }
 
   /**

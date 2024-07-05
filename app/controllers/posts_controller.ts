@@ -9,10 +9,31 @@ export default class PostsController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
-    const data = await Post.all()
+  async index({ request }: HttpContext) {
 
-    this.response('Posts retrieved successfully', data)
+    const params = request.all()
+
+    let query: any = {
+      table_and_join: 'from posts',
+      field_show: [
+        'id',
+        'user_id',
+        'title',
+        'slug',
+        'content',
+        'type',
+        'status',
+        'image_url',
+        'view_count',
+        'created_at',
+        'updated_at',
+      ],
+      field_search: ['user_role_name'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Users retrieved successfully', result)
   }
 
   /**
@@ -25,13 +46,16 @@ export default class PostsController extends BaseController {
       vine.object({
         user_id: vine.number().use(existsRule({ table: 'users', column: 'id' })),
         title: vine.string(),
-        body: vine.string(),
+        content: vine.string(),
+        image_url: vine.string().optional(),
+        status: vine.string().optional(),
+        type: vine.string().optional(),
       })
     )
     const output = await validator.validate({ user_id: user.id, ...payload })
     const data = await Post.create(output)
 
-    this.response('Post created successfully', data)
+    this.response('Post created successfully', { item: data })
   }
 
   /**
@@ -43,7 +67,7 @@ export default class PostsController extends BaseController {
     await data.user.load('user_role')
     await data.user.load('user_status')
 
-    this.response('Post retrieved successfully', data)
+    this.response('Post retrieved successfully', { item: data })
   }
 
   /**
@@ -57,7 +81,10 @@ export default class PostsController extends BaseController {
         id: vine.number().use(existsRule({ table: 'posts', column: 'id' })),
         user_id: vine.number().use(existsRule({ table: 'users', column: 'id' })),
         title: vine.string(),
-        body: vine.string(),
+        content: vine.string(),
+        image_url: vine.string().optional(),
+        status: vine.string().optional(),
+        type: vine.string().optional(),
       })
     )
     const output = await validator.validate({ id: params.id, user_id: user.id, ...payload })
@@ -69,7 +96,7 @@ export default class PostsController extends BaseController {
 
     await data?.merge(output).save()
 
-    this.response('Post updated successfully', data)
+    this.response('Post updated successfully', { item: data })
   }
 
   /**
