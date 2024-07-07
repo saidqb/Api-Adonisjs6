@@ -8,9 +8,22 @@ export default class ConfigsController extends BaseController {
    * Display a list of resource
    */
   async index() {
-    const data = await Config.all()
+     const params = request.all()
 
-    this.responseList('Config retrieved successfully', { items: data })
+    let query: any = {
+      table_and_join: 'from posts',
+      field_show: [
+        'id',
+        'key',
+        'value',
+        'is_json',
+      ],
+      field_search: ['key'],
+      pagination: true,
+    }
+
+    const result = await this.query.generate(params, query, this.db)
+    this.responseList('Config retrieved successfully', result)
   }
 
   /**
