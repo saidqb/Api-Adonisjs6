@@ -7,7 +7,7 @@ export default class ConfigsController extends BaseController {
   /**
    * Display a list of resource
    */
-  async index() {
+  async index({ request }: HttpContext) {
      const params = request.all()
 
     let query: any = {
