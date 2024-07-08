@@ -31,7 +31,7 @@ router
         // account
         router.get('account', '#controllers/account_controller.show')
         router.post('account', '#controllers/account_controller.update')
-        router.get('account/refresh_token', '#controllers/auth_controller.refresh_token')
+        router.get('account/refresh_token', '#controllers/account_controller.refresh_token')
         router.post('account/logout', '#controllers/account_controller.logout')
 
         router

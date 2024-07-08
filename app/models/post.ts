@@ -3,6 +3,7 @@ import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import User from '#models/user'
 
+
 export default class Post extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
@@ -14,6 +15,7 @@ export default class Post extends BaseModel {
   declare title: string
 
   @column()
+
   declare slug: string
 
   @column()
@@ -26,7 +28,7 @@ export default class Post extends BaseModel {
   declare status: string
 
   @column()
-  declare image_url: string
+  declare imageUrl: string
 
   @column()
   declare viewCount: number
