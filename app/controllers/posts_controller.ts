@@ -4,6 +4,7 @@ import BaseController from '#core/base_controller'
 import Post from '#models/post'
 import { existsRule } from '#rules/exists'
 import PostPolicy from '#policies/post_policy'
+import string from '@adonisjs/core/helpers/string'
 
 export default class PostsController extends BaseController {
   /**
@@ -47,13 +48,20 @@ export default class PostsController extends BaseController {
         user_id: vine.number().use(existsRule({ table: 'users', column: 'id' })),
         title: vine.string(),
         content: vine.string(),
+        slug: vine.string().optional(),
         image_url: vine.string().optional(),
         status: vine.string().optional(),
         type: vine.string().optional(),
       })
     )
-    const output = await validator.validate({ user_id: user.id, ...payload })
+    var output = await validator.validate({ user_id: user.id, ...payload })
+
+
     const data = await Post.create(output)
+
+    var upData = { slug: string.slug(output.title + '-' + data.id) }
+
+    await data?.merge(upData).save()
 
     this.response('Post created successfully', { item: data })
   }
