@@ -3,15 +3,17 @@
 
 Fork From [AdonisJS-6-REST-API](https://github.com/rayhannovelo/AdonisJS-6-REST-API/tree/main) Banyak perubahan dan modifikasi dari fork
 
-# Api-Adonisjs 
+# Adonis-Js Rest Api
 
-Version: 6
+Version Framework: 6
 
 ## Description:
-Clone and Work
+Clone and Work, Using adonis js Framework
 
 ## Requirements:
 - **Node.js** >= 20.6
+
+## Database Avilable
 - Mysql
 
 ## Features:
@@ -26,7 +28,7 @@ Clone and Work
 - Constant
 - Date [(luxon)](https://moment.github.io/luxon/#/?id=luxon)
 - Core :: handler controller
-- filter query params
+- Filter query params
 
 
 ## VSCODE Extension:
